@@ -1,22 +1,8 @@
-import os
-from args import *
-from torch import optim
-from torch import nn
-import torch
-from torch.nn import functional as F
-from torch.utils.data import DataLoader
-from functools import partial
-from training import losses
-from estimators import define_model
-from estimators import efficientnet_standard, resnet_torchvision_custom
 import random
-from tqdm import tqdm
 from torch.backends import cudnn
-from pytorch_galaxy_datasets.galaxy_dataset import *
+from utils.galaxy_dataset import *
 import torch
-from torch.utils.tensorboard import SummaryWriter
-from shared import label_metadata, schemas
-import multiprocessing
+
 MODEL_PATH = "/data/renhaoye/model_256_Adam_transfer/model_10.pt"
 
 

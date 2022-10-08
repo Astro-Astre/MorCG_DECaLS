@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="RemoteMappingsManager">
+    <list>
+      <list>
+        <remote-mappings server-id="python@sftp://renhaoye@119.78.226.224:22/home/renhaoye/miniconda3/envs/morcg/bin/python">
+          <settings>
+            <list>
+              <mapping local-root="$PROJECT_DIR$" remote-root="/data/renhaoye/MorCG_DECaLS" />
+            </list>
+          </settings>
+        </remote-mappings>
+      </list>
+    </list>
+  </component>
+</project>

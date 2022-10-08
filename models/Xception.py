@@ -1,4 +1,4 @@
-from args import *
+from config import *
 import torch.nn as nn
 
 

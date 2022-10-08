@@ -1,15 +1,11 @@
-import os
-from training import losses
-from estimators import define_model
-from estimators import efficientnet_standard, resnet_torchvision_custom
-import random
-from torch.backends import cudnn
-from pytorch_galaxy_datasets.galaxy_dataset import *
-from args import *
+from models import losses, efficientnet_standard
+from architecture import resnet_torchvision_custom
+from utils.galaxy_dataset import *
+from config import *
 import torch
 from torch.utils.tensorboard import SummaryWriter
 from torch.utils.data import DataLoader
-from shared import label_metadata, schemas
+from utils import schemas, label_metadata
 from tqdm import tqdm
 
 
@@ -33,7 +29,7 @@ def select_base_architecture_func_from_name(base_architecture):
         get_architecture = efficientnet_standard.efficientnet_b0
         representation_dim = 1280
     elif base_architecture == 'resnet_detectron':
-        from estimators import resnet_detectron2_custom
+        from architecture import resnet_detectron2_custom
         get_architecture = resnet_detectron2_custom.get_resnet
         representation_dim = 2048
     elif base_architecture == 'resnet_torchvision':

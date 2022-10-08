@@ -1,18 +1,5 @@
-import os
-from args import *
-from torch import optim
-from torch import nn
-import torch
-from torch.nn import functional as F
-from torch.utils.data import DataLoader
-from functools import partial
-from training import losses
-from estimators import define_model
-from estimators import efficientnet_standard, resnet_torchvision_custom
-import random
-from torch.backends import cudnn
-from pytorch_galaxy_datasets.galaxy_dataset import *
-import torch
+from utils.galaxy_dataset import *
+from astre_utils.utils import *
 
 MODEL_PATH = "/data/renhaoye/MorCG/pth/x_ception-LR_0.0001-LS_focal_loss-CLS_7-BSZ_32-OPT_AdamW-new_no/model_6.pt"
 
@@ -23,16 +10,6 @@ def pred(i, rows, w):
     y = model(x.to("cuda:0").unsqueeze(0))
     pred = (torch.max(torch.exp(y), 1)[1]).data.cpu().numpy()
     w.writelines(str(rows[i].split("\n")[0]) + " " + str(pred[0]) + "\n")
-
-
-def init_rand_seed(rand_seed):
-    torch.manual_seed(rand_seed)
-    torch.cuda.manual_seed(rand_seed)  # 为当前GPU设置随机种子
-    torch.cuda.manual_seed_all(rand_seed)  # 为所有GPU设置随机种子
-    np.random.seed(rand_seed)
-    random.seed(rand_seed)
-    cudnn.benchmark = False
-    cudnn.deterministic = True
 
 
 if __name__ == '__main__':

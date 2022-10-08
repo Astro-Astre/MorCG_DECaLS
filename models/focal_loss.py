@@ -1,7 +1,7 @@
 import torch.nn as nn
 import torch.nn.functional as F
 import torch
-from args import *
+from config import *
 
 
 class focal_loss(nn.Module):
